@@ -4,6 +4,7 @@ const{
     getParty,
     createParty,
     deleteParty,
+    updateParty
 } = require('../controllers/partyController');
 
 
@@ -16,5 +17,5 @@ router.post('/', createParty) //POST and create a new party
 
 router.delete('/:id', deleteParty) //DELETE a party by id
 
-
+router.patch('/:id', updateParty) //PATCH and update party
 module.exports = router

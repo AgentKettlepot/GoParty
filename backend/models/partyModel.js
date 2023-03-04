@@ -29,6 +29,10 @@ const partySchema = new Schema({
     },
     theme:{
         type: String,
+    }, 
+    host:{
+        type: String,
+        required:true
     }
     }
 )

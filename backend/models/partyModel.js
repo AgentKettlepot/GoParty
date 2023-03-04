@@ -11,6 +11,10 @@ const partySchema = new Schema({
         type: String,
         required:true
     },
+    date:{
+        type: Date,
+        required:true
+    },
     max_occupancy:{
         type: Number,
         required:true

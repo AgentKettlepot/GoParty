@@ -12,6 +12,7 @@ app.use((req,res,next) => {
 })
 
 app.use('/goParty/', partyRoutes)
+
 mongoose.connect(process.env.MONG_URI).then(()=>{
     app.listen(process.env.PORT, ()=>{
         console.log("Listening on Port 4000!!!")

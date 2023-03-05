@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 
+import PartyDetails from '../components/PartyDetails'
+import PartyForm from '../components/PartyForm'
 const Home= () =>{
 
     const [parties, setParties] = useState(null)
@@ -20,9 +22,10 @@ const Home= () =>{
         <div className="home">
             <div classNames="parties">
                 {parties && parties.map((party)=>(
-                    <p key={party._id}>{party.title}</p>
+                    <PartyDetails key={party._id} party={party}/>
                 ))}
             </div>
+            <PartyForm />
         </div>
     )
 }

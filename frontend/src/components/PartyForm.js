@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { usePartiesContext } from "../hooks/usePartiesContext"
 
 const PartyForm = () => {
+    const { dispatch } = usePartiesContext()
+
     const [title, setTitle] = useState('')
     const [school, setSchool] = useState('')
     const [date, setDate] = useState('')
@@ -39,6 +42,7 @@ const PartyForm = () => {
             setHost('')
             setError(null)
             console.log('New Party Added!', json)
+            dispatch({type: 'CREATE_PARTY', payload: json})
         }
     }
 

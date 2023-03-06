@@ -12,6 +12,11 @@ export const partiesReducer = (state, action) => {
             return {
                 parties: [action.payload, ...state.parties]
             }
+
+        case 'DELETE_PARTY':
+            return{
+                parties: state.parties.filter((w)=> w._id !== action.payload._id)
+            }
         default:
             return state
     }

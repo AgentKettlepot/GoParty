@@ -21,6 +21,36 @@ const getParty = async(req, res)=>{
 
 const createParty = async(req, res)=>{
     const {title, school, date, max_occupancy, current_occupancy, address, theme, host} = req.body
+
+    let emptyFields = []
+    if (!title){
+        emptyFields.push('title')
+    }
+    if (!school){
+        emptyFields.push('school')
+    }
+    if (!date){
+        emptyFields.push('date')
+    }
+    if (!max_occupancy){
+        emptyFields.push('max_occupancy')
+    }
+    if (!current_occupancy){
+        emptyFields.push('current_occupancy')
+    }
+    if (!address){
+        emptyFields.push('address')
+    }
+    if (!theme){
+        emptyFields.push('theme')
+    }
+    if (!host){
+        emptyFields.push('host')
+    }
+
+    if (emptyFields.length > 0){
+        return res.status(400).json({error: "Please fill in all fields!", emptyFields})
+    }
     try{
         const party = await Party.create({title, school, date, max_occupancy, current_occupancy, address, theme, host})
         res.status(200).json(party)

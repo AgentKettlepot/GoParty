@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     },
     parties:{
         type:Array,
+        default:[]
     }
 }, {timestamps:true, type: mongoose.Types.String})
 

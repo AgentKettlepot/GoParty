@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const partyRoutes = require('./routes/partyRouter')
-
+const userRoutes = require('./routes/userRouter')
 
 const app = express();
 app.use(express.json())
@@ -12,6 +12,7 @@ app.use((req,res,next) => {
 })
 
 app.use('/goParty/', partyRoutes)
+app.use('/user/', userRoutes)
 
 mongoose.connect(process.env.MONG_URI).then(()=>{
     app.listen(process.env.PORT, ()=>{

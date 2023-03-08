@@ -34,6 +34,6 @@ const partySchema = new Schema({
         type: String,
         required:true
     }
-    }, {timestamps: true , collection:'parties'})
+    }, {timestamps: true, type: mongoose.Types.String})
 
 module.exports = mongoose.model('Party', partySchema)

@@ -16,6 +16,6 @@ const userSchema = new mongoose.Schema({
     parties:{
         type:Array,
     }
-}, {collection:'parties'})
+}, {timestamps:true, type: mongoose.Types.String})
 
 module.exports = mongoose.model('User', userSchema)

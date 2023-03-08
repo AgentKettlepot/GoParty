@@ -3,7 +3,7 @@ const User = require('../models/userModel')
 
 const getUser = async(req, res)=>{
     const {id} = req.params
-    if (!mongoose.Type.ObjectId.isValid(id)){
+    if (!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error: "No user found"})
     }
     
@@ -65,11 +65,15 @@ const createUser = async(req, res)=>{
     }
 }
 
-
+const getUsers = async(req, res)=>{ //Sorting the parties by their date
+    const users = await User.find({}).sort({date:-1})
+    res.status(200).json(users)
+}
 
 module.exports={
     getUser,
     deleteUser,
     updateUser,
-    createUser
+    createUser,
+    getUsers
 }

@@ -9,7 +9,7 @@ const getParties = async(req, res)=>{ //Sorting the parties by their date
 
 const getParty = async(req, res)=>{
     const {id} = req.params
-    if (!mongoose.Type.ObjectId.isValid(id)){
+    if (!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error: "No party found"})
     }
     

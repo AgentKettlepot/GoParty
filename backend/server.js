@@ -4,9 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require("body-parser")
 const passport = require("passport")
 const partyRoutes = require('./routes/partyRouter')
-const userRoutes = require('./routes/userRouter')
 const authRoutes = require("./routes/auth")
-
 
 const app = express();
 app.use(express.json())
@@ -24,8 +22,7 @@ app.use(passport.initialize())
 require("./config/passport")(passport)
 
 app.use('/goParty/', partyRoutes)
-app.use('/user/', userRoutes)
-app.use("/auth", authRoutes)
+app.use("/auth/", authRoutes)
 
 mongoose.connect(process.env.MONG_URI).then(()=>{
     app.listen(process.env.PORT, ()=>{

@@ -1,5 +1,4 @@
-import {usePartiesContext} from '../hooks/usePartiesContext'
-
+import {usePartiesContext} from '../hooks/usePartiesContext' 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const PartyDetails = ({party}) => {

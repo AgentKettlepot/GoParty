@@ -102,3 +102,7 @@ div.error {
 input.error{
   border: 1px solid var(--error);
 }
+
+.navbar-link{
+  padding:10px;
+}

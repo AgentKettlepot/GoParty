@@ -14,14 +14,14 @@ const PartyForm = () => {
     const [current_occupancy, setCurrentOccupancy] = useState(0)
     const [address, setAddress] = useState('')
     const [theme, setTheme] = useState('')
-
+    const [description, setDescription] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setemptyFields] = useState([])
 
 
     const handleSubmit =async (e) =>{
         e.preventDefault()
-        const party = {title, school, date, max_occupancy, current_occupancy, address, theme, host}
+        const party = {title, school, date, max_occupancy, current_occupancy, address, theme, host, description}
 
         const response = await fetch('/goParty', {
             method: 'POST',
@@ -46,6 +46,7 @@ const PartyForm = () => {
             setTheme('')
             setError(null)
             setemptyFields([])
+            setDescription('')
             console.log('New Party Added!', json)
             dispatch({type: 'CREATE_PARTY', payload: json})
         }
@@ -103,6 +104,12 @@ const PartyForm = () => {
                 classnames={emptyFields.includes('theme') ? 'error' : ''}
             />
 
+            <label>Party Description: </label>
+            <input type="text" 
+                onChange={(e)=> setDescription(e.target.value)}
+                value={description}
+                classnames={emptyFields.includes('description') ? 'error' : ''}
+            />
 
             <button>Add Party</button>
             {error && <div classnames="error">{error}</div>}

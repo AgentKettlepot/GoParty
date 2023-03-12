@@ -22,7 +22,7 @@ const PartyDetails = ({party}) => {
     return (
         <div className="party-details">
             <h4>{party.title}</h4>
-            <h3><strong>School: </strong>{party.score}</h3>
+            <h3><strong>School: </strong>{party.school}</h3>
             <h3><strong>Date: </strong>{format(parseISO(party.date), 'MM/dd/yyyy')}</h3> 
             <h3><strong>Max Occupancy: </strong>{party.max_occupancy}</h3>
             <h3><strong>Current_occupancy </strong>{party.current_occupancy}</h3>
@@ -35,6 +35,7 @@ const PartyDetails = ({party}) => {
             </Link>
             </div>
             <h3>Posted: {formatDistanceToNow(new Date(party.createdAt), {addSuffix:true})}</h3>
+            <p><strong>Description: </strong> {party.description} </p>
 
             
             <span  className={party.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={handleClick}>delete</span>

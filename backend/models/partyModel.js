@@ -33,6 +33,9 @@ const partySchema = new Schema({
     host:{
         type: String,
         required:true
+    },
+    description:{
+        type:String
     }
     }, {timestamps: true, type: mongoose.Types.String})
 

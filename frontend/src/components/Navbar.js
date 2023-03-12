@@ -18,6 +18,7 @@ const Navbar = ()=>{
               <h1>GoParty!</h1>
             </Link>
             <nav>
+                <Link className="navbar-link" to="/about">About Us!</Link>
               {user && (
                 <div>
                   <span className="navbar-link">{user.email}</span>

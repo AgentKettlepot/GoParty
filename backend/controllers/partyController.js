@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Party = require('../models/partyModel')
 
 const getParties = async(req, res)=>{ //Sorting the parties by their date
-    const parties = await Party.find({}).sort({date:-1})
+    const parties = await Party.find({}).sort({date:1})
     res.status(200).json(parties)
 }
 
@@ -45,9 +45,6 @@ const createParty = async(req, res)=>{
     if (!theme){
         emptyFields.push('theme')
     }
-    if (!host){
-        emptyFields.push('host')
-    }
 
     if (emptyFields.length > 0){
         return res.status(400).json({error: "Please fill in all fields!", emptyFields})
@@ -56,7 +53,7 @@ const createParty = async(req, res)=>{
         const party = await Party.create({title, school, date, max_occupancy, current_occupancy, address, theme, host})
         res.status(200).json(party)
     }catch(error){
-        res.status(400).json({error: error.message})
+        res.status(400).json({ error: error.message, emptyFields })
     }
 }
 

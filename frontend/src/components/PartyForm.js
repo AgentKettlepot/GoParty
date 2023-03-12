@@ -1,7 +1,10 @@
 import { useState } from "react"
 import { usePartiesContext } from "../hooks/usePartiesContext"
-
+import { useAuthContext } from '../hooks/useAuthContext'
 const PartyForm = () => {
+    const { user } = useAuthContext()
+    const host = user.email
+
     const { dispatch } = usePartiesContext()
 
     const [title, setTitle] = useState('')
@@ -11,7 +14,6 @@ const PartyForm = () => {
     const [current_occupancy, setCurrentOccupancy] = useState(0)
     const [address, setAddress] = useState('')
     const [theme, setTheme] = useState('')
-    const [host, setHost] = useState('')
 
     const [error, setError] = useState(null)
     const [emptyFields, setemptyFields] = useState([])
@@ -42,7 +44,6 @@ const PartyForm = () => {
             setCurrentOccupancy(0)
             setAddress('')
             setTheme('')
-            setHost('')
             setError(null)
             setemptyFields([])
             console.log('New Party Added!', json)
@@ -51,7 +52,7 @@ const PartyForm = () => {
     }
 
     return (
-        <form className="create" onSubmit={handleSubmit}>
+        <form classnames="create" onSubmit={handleSubmit}>
             <h3>Add a Party!</h3>
             <label>Party Name: </label>
             <input type="text"
@@ -64,53 +65,47 @@ const PartyForm = () => {
             <input type="text" 
             onChange={(e)=> setSchool(e.target.value)}
             value={school}
-            className={emptyFields.includes('school') ? 'error' : ''}
+            classnames={emptyFields.includes('school') ? 'error' : ''}
             />
 
             <label>Party Date: </label>
             <input type="date" 
                 onChange={(e)=> setDate(e.target.value)}
                 value={date}
-                className={emptyFields.includes('date') ? 'error' : ''}
+                classnames={emptyFields.includes('date') ? 'error' : ''}
             />
 
             <label>Max Occupancy: </label>
             <input type="number" 
                 onChange={(e)=> setMaxOccupancy(e.target.value)}
                 value={max_occupancy}
-                className={emptyFields.includes('max_occupancy') ? 'error' : ''}
+                classnames={emptyFields.includes('max_occupancy') ? 'error' : ''}
             />
 
             <label>Current Occupancy: </label>
             <input type="number" 
                 onChange={(e)=> setCurrentOccupancy(e.target.value)}
                 value={current_occupancy}
-                className={emptyFields.includes('current_occupancy') ? 'error' : ''}
+                classnames={emptyFields.includes('current_occupancy') ? 'error' : ''}
             />
 
             <label>Address </label>
             <input type="text" 
                 onChange={(e)=> setAddress(e.target.value)}
                 value={address}
-                className={emptyFields.includes('address') ? 'error' : ''}
+                classnames={emptyFields.includes('address') ? 'error' : ''}
             />
 
             <label>Party Theme: </label>
             <input type="text" 
                 onChange={(e)=> setTheme(e.target.value)}
                 value={theme}
-                className={emptyFields.includes('theme') ? 'error' : ''}
+                classnames={emptyFields.includes('theme') ? 'error' : ''}
             />
 
-            <label>Host: </label>
-            <input type="text" 
-                onChange={(e)=> setHost(e.target.value)}
-                value={host}
-                className={emptyFields.includes('host') ? 'error' : ''}
-            />
 
             <button>Add Party</button>
-            {error && <div className="error">{error}</div>}
+            {error && <div classnames="error">{error}</div>}
         </form>
 
     )

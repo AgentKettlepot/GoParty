@@ -106,3 +106,7 @@ input.error{
 .navbar-link{
   padding:10px;
 }
+
+.hidden{
+  display:none
+}

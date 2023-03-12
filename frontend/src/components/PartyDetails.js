@@ -2,8 +2,10 @@ import {usePartiesContext} from '../hooks/usePartiesContext'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { format, parseISO } from 'date-fns'
 import {Link} from 'react-router-dom'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const PartyDetails = ({party}) => {
+    const { user } = useAuthContext()
     console.log(party.host)
     const {dispatch} = usePartiesContext()
     const handleClick = async() =>{
@@ -34,7 +36,9 @@ const PartyDetails = ({party}) => {
             </div>
             <h3>Posted: {formatDistanceToNow(new Date(party.createdAt), {addSuffix:true})}</h3>
 
-            <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+            
+            <span  className={party.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={handleClick}>delete</span>
+           
         </div>
     )
 }

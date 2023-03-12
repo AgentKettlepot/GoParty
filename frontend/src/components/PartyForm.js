@@ -105,11 +105,14 @@ const PartyForm = () => {
             />
 
             <label>Party Description: </label>
-            <input type="text" 
+    
+            <textarea 
+            rows="5" cols="50"
                 onChange={(e)=> setDescription(e.target.value)}
                 value={description}
-                classnames={emptyFields.includes('description') ? 'error' : ''}
-            />
+                classnames={emptyFields.includes('description') ? 'error' : ''}>
+
+            </textarea>
 
             <button>Add Party</button>
             {error && <div classnames="error">{error}</div>}

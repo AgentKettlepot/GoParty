@@ -13,12 +13,11 @@ const PartyDetails = ({party}) => {
             method:'DELETE'
         })
         const json = await response.json()
-
         if (response.ok){
             dispatch({type: 'DELETE_PARTY', payload : json})
         }
     }
-  
+
     return (
         <div className="party-details">
             <h4>{party.title}</h4>
@@ -37,9 +36,7 @@ const PartyDetails = ({party}) => {
             <h3>Posted: {formatDistanceToNow(new Date(party.createdAt), {addSuffix:true})}</h3>
             <p><strong>Description: </strong> {party.description} </p>
 
-            
-            <span  className={party.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={handleClick}>delete</span>
-           
+            <span  className={party.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={handleClick}>delete</span> 
         </div>
     )
 }

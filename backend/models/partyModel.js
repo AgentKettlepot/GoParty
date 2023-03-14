@@ -36,6 +36,10 @@ const partySchema = new Schema({
     },
     description:{
         type:String
+    },
+    image:{
+        title: { type: String, length: 255 },
+        image: { type: JSON }
     }
     }, {timestamps: true, type: mongoose.Types.String})
 

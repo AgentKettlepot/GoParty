@@ -4,7 +4,6 @@ import { useAuthContext } from '../hooks/useAuthContext'
 const PartyForm = () => {
     const { user } = useAuthContext()
     const host = user.email
-
     const { dispatch } = usePartiesContext()
 
     const [title, setTitle] = useState('')
@@ -111,7 +110,6 @@ const PartyForm = () => {
                 onChange={(e)=> setDescription(e.target.value)}
                 value={description}
                 classnames={emptyFields.includes('description') ? 'error' : ''}>
-
             </textarea>
 
             <button>Add Party</button>

@@ -6,7 +6,6 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 const PartyDetails = ({party}) => {
     const { user } = useAuthContext()
-    console.log(party.host)
     const {dispatch} = usePartiesContext()
     const handleClick = async() =>{
         const response = await fetch('/goParty/' + party._id, {
@@ -35,7 +34,7 @@ const PartyDetails = ({party}) => {
             </div>
             <h3>Posted: {formatDistanceToNow(new Date(party.createdAt), {addSuffix:true})}</h3>
             <p><strong>Description: </strong> {party.description} </p>
-
+            <img style={{ width: '100%', height: 300 }} src={party.picture} alt=""/>
             <span  className={party.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={handleClick}>delete</span> 
         </div>
     )

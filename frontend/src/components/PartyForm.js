@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { usePartiesContext } from "../hooks/usePartiesContext"
 import { useAuthContext } from '../hooks/useAuthContext'
+import FileBase64 from 'react-file-base64';
 const PartyForm = () => {
     const { user } = useAuthContext()
     const host = user.email
@@ -15,13 +16,14 @@ const PartyForm = () => {
     const [theme, setTheme] = useState('')
     const [description, setDescription] = useState('')
     const [error, setError] = useState(null)
+    const [picture, setPicture] = useState('')
     const [emptyFields, setemptyFields] = useState([])
 
 
     const handleSubmit =async (e) =>{
         e.preventDefault()
-        const party = {title, school, date, max_occupancy, current_occupancy, address, theme, host, description}
-
+        //console.log(picture)
+        const party = {title, school, date, max_occupancy, current_occupancy, address, theme, host, description, picture}
         const response = await fetch('/goParty', {
             method: 'POST',
             body: JSON.stringify(party),
@@ -30,7 +32,6 @@ const PartyForm = () => {
             }
         })
         const json = await response.json()
-
         if (!response.ok){
             setError(json.error)
             setemptyFields(json.emptyFields)
@@ -111,7 +112,14 @@ const PartyForm = () => {
                 value={description}
                 classnames={emptyFields.includes('description') ? 'error' : ''}>
             </textarea>
-
+            <label>Add a Pic!</label>
+            <FileBase64
+          type="file"
+          multiple={false}
+          onDone={({ base64 }) =>
+            setPicture(base64)
+    }
+        />
             <button>Add Party</button>
             {error && <div classnames="error">{error}</div>}
         </form>

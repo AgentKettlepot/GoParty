@@ -21,8 +21,8 @@ const getParty = async(req, res)=>{
 }
 
 const createParty = async(req, res)=>{
-    const {title, school, date, max_occupancy, current_occupancy, address, theme, host, description} = req.body
-
+    const {title, school, date, max_occupancy, current_occupancy, address, theme, host, description, picture} = req.body
+    console.log(picture)
     let emptyFields = []
     if (!title){
         emptyFields.push('title')
@@ -50,7 +50,8 @@ const createParty = async(req, res)=>{
         return res.status(400).json({error: "Please fill in all fields!", emptyFields})
     }
     try{
-        const party = await Party.create({title, school, date, max_occupancy, current_occupancy, address, theme, host, description})
+        const party = await Party.create({title, school, date, max_occupancy, current_occupancy, address, theme, host, description, picture})
+        //picture shows here, but isn't added in party
         res.status(200).json(party)
     }catch(error){
         res.status(400).json({ error: error.message, emptyFields })

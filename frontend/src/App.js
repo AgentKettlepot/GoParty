@@ -7,6 +7,7 @@ import Signup from './pages/SignUp'
 import UserDetails from './pages/User'
 import About from './pages/About'
 import Landing from './pages/Landing'
+import PartyWebsite from './pages/PartyWebsite'
 function App() {
   const { user } = useAuthContext()
   return (
@@ -32,7 +33,10 @@ function App() {
               path='/user/:user' 
               element={!user ? <Navigate to="/" />: <UserDetails key={user.email} user={user} />} 
             />
-
+            <Route 
+              path="/party/:id"
+              element={!user ? <Navigate to="/" />: <PartyWebsite/>}      
+            />
             <Route 
               path='/about' 
               element={<About />} 

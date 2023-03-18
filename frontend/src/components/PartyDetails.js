@@ -19,7 +19,10 @@ const PartyDetails = ({party}) => {
 
     return (
         <div className="party-details">
+            <Link to={"/party/"+ party._id}>
             <h4>{party.title}</h4>
+            </Link>
+      
             <h3><strong>School: </strong>{party.school}</h3>
             <h3><strong>Date: </strong>{format(parseISO(party.date), 'MM/dd/yyyy')}</h3> 
             <h3><strong>Max Occupancy: </strong>{party.max_occupancy}</h3>

@@ -15,7 +15,7 @@ app.use(
 )
 app.use(bodyParser.json())
 app.use((req,res,next) => {
-    console.log(req.path, req.methood) //displays each request
+    console.log(req.path, req.method) //displays each request
     next()
 })
 app.use(passport.initialize())

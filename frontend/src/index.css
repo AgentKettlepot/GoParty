@@ -46,18 +46,19 @@ header a {
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
+
 .party-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
+
 .party-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
 .party-details span {
-  position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
@@ -66,7 +67,7 @@ header a {
   border-radius: 50%;
   color: #333;
 }
-
+/*position: absolute;*/
 
 /* new workout form */
 label, input {
@@ -109,4 +110,9 @@ input.error{
 
 .hidden{
   display:none
+}
+
+.host{
+  display:flex;
+  margin:0px
 }

@@ -22,24 +22,22 @@ const PartyDetails = ({party}) => {
             <Link to={"/party/"+ party._id}>
             <h4>{party.title}</h4>
             </Link>
-      
             <h3><strong>School: </strong>{party.school}</h3>
             <h3><strong>Date: </strong>{format(parseISO(party.date), 'MM/dd/yyyy')}</h3> 
             <h3><strong>Max Occupancy: </strong>{party.max_occupancy}</h3>
             <h3><strong>Current_occupancy </strong>{party.current_occupancy}</h3>
             <h3><strong>Address: </strong>{party.address}</h3>
             <h3><strong>Theme: </strong>{party.theme}</h3>
+           
+            <h3>Posted: {formatDistanceToNow(new Date(party.createdAt), {addSuffix:true})}</h3>
             <div className="host">
             <h3>Host:</h3>
             <Link to={"/user/"+ party.host}>
               <h3> {party.host}</h3>
             </Link>
             </div>
-            <h3>Posted: {formatDistanceToNow(new Date(party.createdAt), {addSuffix:true})}</h3>
             <p><strong>Description: </strong> {party.description} </p>
-            <img style={{ width: '100%', height: 300 }} src={party.picture} alt=""/>
-            <span  className={party.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={handleClick}>delete</span> 
-        </div>
+            </div>
     )
 }
 

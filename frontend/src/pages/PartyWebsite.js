@@ -50,16 +50,13 @@ const PartyWebsite = () =>{
     }
 //  <h3><strong>Date: </strong>{format(parseISO(parties.date), 'MM/dd/yyyy')}</h3> 
 //    <h3>Posted: {formatDistanceToNow(new Date(parties.createdAt), {addSuffix:true})}</h3>
-//
 
 return(
         <div className="party-details">
-            <h4 className={parties.date<new Date().getTime() ? 'pastDate' : 'error'}>{parties.title}</h4>
             <h3><strong>School: </strong>{parties.school}</h3>
-            <h3><strong>Date: </strong>{parties.date}</h3> 
+         
+            <h3><strong>Date: </strong>{(parties.date).substring(0, (parties.date).indexOf("0"))}</h3> 
             <h3><strong>Max Occupancy: </strong>{parties.max_occupancy}</h3>
-            
-            <h3><strong>Current_occupancy </strong>{parties.current_occupancy}</h3>
             <h3><strong>Address: </strong>{parties.address}</h3>
             <h3><strong>Theme: </strong>{parties.theme}</h3>
             <div className="host">  
@@ -67,7 +64,6 @@ return(
             <Link to={"/user/"+ parties.host}>
               <h3> {parties.host}</h3>
             </Link>
-            <span id="increaseOcc" className={parties.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={increaseOccClick}>Add</span> 
             <span id="deleteParty" className={parties.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={deleteClick}>delete</span> 
             </div>
         

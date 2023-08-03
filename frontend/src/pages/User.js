@@ -19,7 +19,7 @@ const UserDetails = () =>{
 
         fetchParties()
     }, [dispatch])
-
+    console.log("parties:" , parties)
     const userParties = parties.filter(
         (party, index) => party.host ===email
     )
@@ -27,7 +27,7 @@ const UserDetails = () =>{
         <div classNames="user">
             <h1>{email}</h1>
             <div classNames="parties">
-                    {userParties && userParties.map((party)=>(
+                    {userParties && userParties.length>0 && userParties.map((party)=>(
                         
                         <PartyDetails key={party._id} party={party}/>
                     ))}

@@ -6,7 +6,7 @@ import Login from './pages/Login'
 import Signup from './pages/SignUp'
 import UserDetails from './pages/User'
 import About from './pages/About'
-import Landing from './pages/Landing'
+
 import PartyWebsite from './pages/PartyWebsite'
 function App() {
   const { user } = useAuthContext()
@@ -18,7 +18,7 @@ function App() {
         <Routes>
             <Route 
               path="/" 
-              element={user ? <Home /> : <Landing />} 
+              element={user ? <Home /> : <About />} 
             />
             <Route 
               path="/login" 

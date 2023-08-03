@@ -15,7 +15,11 @@ const Navbar = ()=>{
         <header>
           <div className="container">
             <Link to="/">
-              <h1>GoParty!</h1>
+              <div className="title-pic">
+                <img src="LOGO.png" height='60'/>
+                <h1>GoParty!</h1>
+              </div>
+            
             </Link>
             <nav>
                 <Link className="navbar-link" to="/about">About Us!</Link>

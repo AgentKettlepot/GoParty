@@ -3,6 +3,7 @@ import { usePartiesContext } from "../hooks/usePartiesContext"
 
 import PartyDetails from '../components/PartyDetails'
 import PartyForm from '../components/PartyForm'
+import Fade from 'react-reveal/Fade';
 
 const Home= () =>{
     const {parties, dispatch } = usePartiesContext()
@@ -21,11 +22,14 @@ const Home= () =>{
 
     return(
         <div className="home">
+            <Fade left>
             <div classNames="parties">
-                {parties && parties.map((party)=>(
+                
+                {parties && parties.length>0 && parties.map((party)=>(
                     <PartyDetails key={party._id} party={party}/>
                 ))}
             </div>
+            </Fade>
             <PartyForm />
         </div>
     )

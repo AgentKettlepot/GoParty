@@ -33,29 +33,14 @@ const PartyWebsite = () =>{
             dispatch({type: 'DELETE_PARTY', payload : json})
         }
     }
-    const increaseOccClick= async() =>{
-       const newOccCount = parties.current_occupancy+1
-       console.log(newOccCount)
-       const newParty = {...parties, current_occupancy:newOccCount}
-       /* FIND A WAY TO AUTO REFRESH OR AUTO UPDATE CODE HERE*/
-       const response = await fetch('/goParty/' + parties._id, {
-        method: 'PATCH',
-        body: JSON.stringify(newParty),
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    })
-    const json = await response.json()
-    dispatch({type: 'SET_PARTIES', payload: json})
-    }
+
 //  <h3><strong>Date: </strong>{format(parseISO(parties.date), 'MM/dd/yyyy')}</h3> 
 //    <h3>Posted: {formatDistanceToNow(new Date(parties.createdAt), {addSuffix:true})}</h3>
 
 return(
         <div className="party-details">
             <h3><strong>School: </strong>{parties.school}</h3>
-         
-            <h3><strong>Date: </strong>{(parties.date).substring(0, (parties.date).indexOf("0"))}</h3> 
+            <h3><strong>Date: </strong>{String(parties.date).substring(0, String(parties.date).indexOf("T"))}</h3> 
             <h3><strong>Max Occupancy: </strong>{parties.max_occupancy}</h3>
             <h3><strong>Address: </strong>{parties.address}</h3>
             <h3><strong>Theme: </strong>{parties.theme}</h3>
@@ -64,16 +49,15 @@ return(
             <Link to={"/user/"+ parties.host}>
               <h3> {parties.host}</h3>
             </Link>
-            <span id="deleteParty" className={parties.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={deleteClick}>delete</span> 
             </div>
         
             <p><strong>Description: </strong> {parties.description} </p>
-            <img style={{ width: '100%', height: 300 }} src={parties.picture} alt=""/>
+            <img style={{width: 500, height:"auto"}} src={parties.picture} alt=""/>
 
             <h3>Want More Information?</h3>
             <p>Send an email!</p> <a href="mailto:{parties.host}">{parties.host}</a>
 
-            <h3>I Want to Sign Up!</h3>
+            <span id="deleteParty" className={parties.host === user.email  ? 'material-symbols-outlined' : 'hidden'} onClick={deleteClick}>delete</span> 
         </div>
     )
 }

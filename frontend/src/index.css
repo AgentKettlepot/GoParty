@@ -1,5 +1,7 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 
 /* layout */
 :root {
@@ -9,11 +11,19 @@
 body {
   background: #f1f1f1;
   margin: 0;
-  font-family: "Poppins";
+  font-family: 'Raleway', sans-serif;
 }
+
+/* HEADER */
 header {
   background: #fff;
+
 }
+
+header :hover{
+  color: rgb(0, 0, 0);
+}
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -30,6 +40,10 @@ header a {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
+}
+
+.title-pic{
+  display:flex;
 }
 
 /* homepage */
@@ -67,9 +81,7 @@ header a {
   border-radius: 50%;
   color: #333;
 }
-/*position: absolute;*/
 
-/* new workout form */
 label, input {
   display: block;
 }

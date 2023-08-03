@@ -19,10 +19,6 @@ const partySchema = new Schema({
         type: Number,
         required:true
     },
-    current_occupancy:{
-        type: Number,
-        required:true
-    },
     address:{
         type: String,
         required:true

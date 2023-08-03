@@ -25,7 +25,6 @@ const PartyDetails = ({party}) => {
             <h3><strong>School: </strong>{party.school}</h3>
             <h3><strong>Date: </strong>{format(parseISO(party.date), 'MM/dd/yyyy')}</h3> 
             <h3><strong>Max Occupancy: </strong>{party.max_occupancy}</h3>
-            <h3><strong>Current_occupancy </strong>{party.current_occupancy}</h3>
             <h3><strong>Address: </strong>{party.address}</h3>
             <h3><strong>Theme: </strong>{party.theme}</h3>
            

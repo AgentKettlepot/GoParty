@@ -1,11 +1,10 @@
 import { useEffect } from "react"
+import {useParams} from 'react-router-dom';
 import { usePartiesContext } from "../hooks/usePartiesContext"
-
 import PartyDetails from '../components/PartyDetails'
-import PartyForm from '../components/PartyForm'
-import Fade from 'react-reveal/Fade';
 
-const Home= () =>{
+const CollegeSearch = () =>{
+    const collegename = useParams()
     const {parties, dispatch } = usePartiesContext()
     useEffect(()=>{
         const fetchParties= async()=>{
@@ -19,19 +18,20 @@ const Home= () =>{
 
         fetchParties()
     }, [dispatch])
-
+    const collegeParties = parties.filter(
+       
+        (party, index) => party.school ===collegename.college
+    )
     return(
-        <div className="home">
-            <Fade left>
+        <div classNames="user">
+            <h1>{collegename.college} Parties</h1>
             <div classNames="parties">
-                {parties && parties.length>0 && parties.map((party)=>(
+                {collegeParties && collegeParties.length>0 && collegeParties.map((party)=>(
                     <PartyDetails key={party._id} party={party}/>
                 ))}
             </div>
-            </Fade>
-            <PartyForm />
         </div>
     )
 }
 
-export default Home
+export default CollegeSearch

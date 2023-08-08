@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Signup from './pages/SignUp'
 import UserDetails from './pages/User'
 import About from './pages/About'
+import CollegeSearch from './pages/CollegeSearch'
 
 import PartyWebsite from './pages/PartyWebsite'
 function App() {
@@ -36,6 +37,10 @@ function App() {
             <Route 
               path="/party/:id"
               element={!user ? <Navigate to="/" />: <PartyWebsite/>}      
+            />
+            <Route 
+              path="/college/:college"
+              element={!user ? <Navigate to="/" />: <CollegeSearch/>}      
             />
             <Route 
               path='/about' 

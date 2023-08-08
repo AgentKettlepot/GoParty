@@ -17,15 +17,18 @@ const Navbar = ()=>{
             <Link to="/">
               <div className="title-pic">
                 <img src="LOGO.png" height='60'/>
-                <h1>GoParty!</h1>
+                <h1>GoParty!</h1>    
               </div>
             
             </Link>
+          
             <nav>
                 <Link className="navbar-link" to="/about">About Us!</Link>
+                <br></br>
               {user && (
                 <div>
-                  <span className="navbar-link">{user.email}</span>
+                  <Link className="navbar-link" to={"/user/"+user.email}>{user.email}</Link>
+               
                   <button onClick={handleClick}>Log out</button>
                 </div>
               )}

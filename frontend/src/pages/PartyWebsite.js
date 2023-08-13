@@ -28,14 +28,13 @@ const PartyWebsite = () =>{
         const response = await fetch('/goParty/' + parties._id, {
             method:'DELETE'
         })
+        window.location.reload();
         const json = await response.json()
         if (response.ok){
             dispatch({type: 'DELETE_PARTY', payload : json})
         }
     }
 
-//  <h3><strong>Date: </strong>{format(parseISO(parties.date), 'MM/dd/yyyy')}</h3> 
-//    <h3>Posted: {formatDistanceToNow(new Date(parties.createdAt), {addSuffix:true})}</h3>
 
 return(
         <div className="party-details">

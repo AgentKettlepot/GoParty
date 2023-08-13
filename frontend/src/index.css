@@ -120,6 +120,11 @@ input.error{
   padding:10px;
 }
 
+.navbar-link:hover{
+  font-weight: 500;
+  color:red;
+}
+
 .hidden{
   display:none
 }
